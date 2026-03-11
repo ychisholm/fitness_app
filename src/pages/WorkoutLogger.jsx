@@ -8,6 +8,8 @@ import {
   generateId,
 } from '../lib/utils'
 import { WORKOUT_TYPES, EXERCISES } from '../lib/constants'
+import WeightPicker from '../components/WeightPicker'
+import RepsPicker from '../components/RepsPicker'
 
 function buildExercises(type) {
   return (EXERCISES[type] || []).map((name) => {
@@ -34,43 +36,21 @@ function SetRow({ set, index, lastSet, onChange, onToggle }) {
       {/* Set number */}
       <span className="w-5 text-center text-xs font-medium text-zinc-500">{index + 1}</span>
 
-      {/* Weight input */}
-      <div className="flex-1 relative">
-        <input
-          type="number"
-          value={set.weight}
-          onChange={(e) => onChange(set.id, 'weight', e.target.value)}
-          placeholder={lastSet?.weight || '0'}
-          className={`
-            w-full bg-zinc-800 border border-zinc-700 rounded-xl px-3 py-2
-            text-sm text-white text-center
-            placeholder:text-zinc-600
-            focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500/30
-            transition-colors
-            ${set.completed ? 'line-through' : ''}
-          `}
-        />
-        <span className="absolute right-2 top-1/2 -translate-y-1/2 text-xs text-zinc-600">lbs</span>
-      </div>
+      {/* Weight picker */}
+      <WeightPicker
+        value={set.weight}
+        lastWeight={lastSet?.weight}
+        onChange={(v) => onChange(set.id, 'weight', v)}
+        disabled={set.completed}
+      />
 
-      {/* Reps input */}
-      <div className="flex-1 relative">
-        <input
-          type="number"
-          value={set.reps}
-          onChange={(e) => onChange(set.id, 'reps', e.target.value)}
-          placeholder={lastSet?.reps || '0'}
-          className={`
-            w-full bg-zinc-800 border border-zinc-700 rounded-xl px-3 py-2
-            text-sm text-white text-center
-            placeholder:text-zinc-600
-            focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500/30
-            transition-colors
-            ${set.completed ? 'line-through' : ''}
-          `}
-        />
-        <span className="absolute right-2 top-1/2 -translate-y-1/2 text-xs text-zinc-600">reps</span>
-      </div>
+      {/* Reps picker */}
+      <RepsPicker
+        value={set.reps}
+        lastReps={lastSet?.reps}
+        onChange={(v) => onChange(set.id, 'reps', v)}
+        disabled={set.completed}
+      />
 
       {/* Complete checkbox */}
       <button
