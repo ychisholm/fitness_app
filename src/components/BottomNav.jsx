@@ -1,10 +1,11 @@
 import { NavLink } from 'react-router-dom'
-import { Home, Dumbbell, BarChart2 } from 'lucide-react'
+import { Home, Dumbbell, BarChart2, BookOpen } from 'lucide-react'
 
 const NAV_ITEMS = [
   { to: '/', icon: Home, label: 'Home' },
   { to: '/log', icon: Dumbbell, label: 'Log' },
   { to: '/stats', icon: BarChart2, label: 'Stats' },
+  { to: '/exercises', icon: BookOpen, label: 'Exercises' },
 ]
 
 export default function BottomNav() {

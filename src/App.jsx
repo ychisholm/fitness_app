@@ -4,6 +4,7 @@ import Dashboard from './pages/Dashboard'
 import WorkoutLogger from './pages/WorkoutLogger'
 import Analytics from './pages/Analytics'
 import ExerciseDetail from './pages/ExerciseDetail'
+import Exercises from './pages/Exercises'
 import BottomNav from './components/BottomNav'
 
 function ScrollToTop() {
@@ -23,6 +24,7 @@ function AppShell() {
         <Route path="/log" element={<WorkoutLogger />} />
         <Route path="/stats" element={<Analytics />} />
         <Route path="/stats/:exerciseName" element={<ExerciseDetail />} />
+        <Route path="/exercises" element={<Exercises />} />
       </Routes>
       <BottomNav />
     </div>
