@@ -39,7 +39,7 @@ export default function VolumeChart() {
 
   return (
     <ResponsiveContainer width="100%" height={180}>
-      <BarChart data={data} margin={{ top: 5, right: 10, left: -20, bottom: 0 }}>
+      <BarChart data={data} margin={{ top: 5, right: 10, left: -20, bottom: 0 }} maxBarSize={16}>
         <CartesianGrid strokeDasharray="3 3" stroke="#27272a" vertical={false} />
         <XAxis dataKey="date" tick={{ fill: '#71717a', fontSize: 10 }} tickLine={false} axisLine={false} />
         <YAxis tick={{ fill: '#71717a', fontSize: 10 }} tickLine={false} axisLine={false} tickFormatter={(v) => `${(v / 1000).toFixed(0)}k`} />

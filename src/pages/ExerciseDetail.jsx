@@ -219,7 +219,7 @@ export default function ExerciseDetail() {
             </div>
             {volumeChartData.length > 0 ? (
               <ResponsiveContainer width="100%" height={160}>
-                <BarChart data={volumeChartData} margin={{ top: 5, right: 10, left: -20, bottom: 0 }}>
+                <BarChart data={volumeChartData} margin={{ top: 5, right: 10, left: -20, bottom: 0 }} maxBarSize={16}>
                   <CartesianGrid strokeDasharray="3 3" stroke="#27272a" vertical={false} />
                   <XAxis dataKey="date" tick={{ fill: '#71717a', fontSize: 10 }} tickLine={false} axisLine={false} />
                   <YAxis
