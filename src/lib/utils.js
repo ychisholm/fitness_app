@@ -1,5 +1,10 @@
 import { STORAGE_KEY, WORKOUT_TYPES, EXERCISES } from './constants'
 
+// Case-insensitive, whitespace-tolerant name match — guards against future drift
+function matchName(a, b) {
+  return a.trim().toLowerCase() === b.trim().toLowerCase()
+}
+
 // 1RM Epley formula
 export function calc1RM(weight, reps) {
   if (!weight || !reps || reps <= 0) return 0
@@ -37,7 +42,7 @@ export function getLastSetsForExercise(exerciseName) {
   const log = getWorkoutLog()
   for (let i = log.length - 1; i >= 0; i--) {
     const workout = log[i]
-    const ex = workout.exercises?.find((e) => e.name === exerciseName)
+    const ex = workout.exercises?.find((e) => matchName(e.name, exerciseName))
     if (ex && ex.sets?.length) return ex.sets
   }
   return null
@@ -61,7 +66,7 @@ export function get1RMHistory(exerciseName) {
   const log = getWorkoutLog()
   const points = []
   for (const workout of log) {
-    const ex = workout.exercises?.find((e) => e.name === exerciseName)
+    const ex = workout.exercises?.find((e) => matchName(e.name, exerciseName))
     if (!ex) continue
     let best = 0
     for (const set of ex.sets || []) {
@@ -101,7 +106,7 @@ export function getExerciseSessionHistory(exerciseName) {
   const log = getWorkoutLog()
   const sessions = []
   for (const workout of log) {
-    const ex = workout.exercises?.find((e) => e.name === exerciseName)
+    const ex = workout.exercises?.find((e) => matchName(e.name, exerciseName))
     if (!ex || !ex.sets?.length) continue
     let volume = 0
     let maxWeight = 0
@@ -139,6 +144,10 @@ export function formatDate(isoString) {
 
 export function generateId() {
   return `${Date.now()}-${Math.random().toString(36).slice(2, 7)}`
+}
+
+export function deleteWorkout(id) {
+  saveWorkoutLog(getWorkoutLog().filter((w) => w.id !== id))
 }
 
 export function buildEmptyWorkout(type) {

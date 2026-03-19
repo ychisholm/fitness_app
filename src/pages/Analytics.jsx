@@ -142,7 +142,7 @@ function ExerciseRow({ name, hasData, onClick }) {
 
 const BIG3 = [
   { key: 'Barbell Bench Press', label: 'Bench',    color: LIFT_COLORS['Barbell Bench Press'] },
-  { key: 'Barbell Squat',       label: 'Squat',    color: LIFT_COLORS['Barbell Squat']       },
+  { key: 'Back Squat',          label: 'Squat',    color: LIFT_COLORS['Back Squat']          },
   { key: 'Deadlift',            label: 'Deadlift', color: LIFT_COLORS['Deadlift']             },
 ]
 

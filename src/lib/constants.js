@@ -8,26 +8,26 @@ export const WORKOUT_TYPES = {
 export const EXERCISES = {
   [WORKOUT_TYPES.UPPER]: [
     'Barbell Bench Press',
-    'Cable Lat Pulldown',
-    'Incline Dumbbell Press',
+    'Lat Pulldown',
+    'Incline DB Press',
     'Seated Cable Row',
-    'Hammer Strength Row',
-    'Dumbbell Chest Fly',
-    'Single-Arm Dumbbell Row',
+    'Barbell Row',
+    'Dumbbell Flyes',
+    'One-Arm DB Row',
   ],
   [WORKOUT_TYPES.LEGS]: [
-    'Barbell Squat',
+    'Back Squat',
     'Deadlift',
-    'Leg Extension Machine',
-    'Hamstring Curl Machine',
+    'Leg Extension',
+    'Lying Leg Curl',
     'Bulgarian Split Squat',
   ],
 }
 
-export const KEY_LIFTS = ['Barbell Bench Press', 'Barbell Squat', 'Deadlift']
+export const KEY_LIFTS = ['Barbell Bench Press', 'Back Squat', 'Deadlift']
 
 export const LIFT_COLORS = {
   'Barbell Bench Press': '#6366f1',
-  'Barbell Squat': '#22d3ee',
+  'Back Squat': '#22d3ee',
   Deadlift: '#f59e0b',
 }
